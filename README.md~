@@ -1,0 +1,3 @@
+# nodejs-error-handling
+
+I created a custom error handler imported it to the error handling middleware file to catch operational errors
