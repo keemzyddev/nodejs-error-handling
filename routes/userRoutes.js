@@ -1,7 +1,7 @@
 const express = require("express");
 const Joi = require("joi");
 const router = express.Router();
-const { subError, api400Error, api404Error } = require("../utils/apiError");
+const { SubError, Api400Error } = require("../utils/apiError");
 const { tryCatch } = require("../utils/tryCatch");
 
 const getUser = () => undefined;
@@ -12,7 +12,7 @@ router.get(
   tryCatch(async (req, res) => {
     const user = getUser();
     if (!user) {
-      throw new api400Error("user not found");
+      throw new Api400Error("user not found");
     }
 
     res.status(200).json("success: true");
@@ -29,7 +29,7 @@ router.post(
     // if (error) throw error;
     const subscription = getSubscription();
     if (!subscription) {
-      throw new subError("Subscription not found");
+      throw new SubError("Subscription not found");
     }
   })
 );
@@ -46,7 +46,7 @@ router.post(
 
     const user = users.find((user) => user.name === name);
     if (user) {
-      throw new api400Error("user exist");
+      throw new Api400Error("user exist");
     }
     let newUser = {
       id: Math.floor(Math.random() * 100 + 4),

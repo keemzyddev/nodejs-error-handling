@@ -1,4 +1,4 @@
-const { subError, api400Error } = require("../utils/apiError");
+const { SubError, Api400Error } = require("../utils/apiError");
 const httpStatusCodes = require("../utils/httpStatusCodes");
 
 const errorHandler = (error, req, res, next) => {
@@ -9,7 +9,7 @@ const errorHandler = (error, req, res, next) => {
     });
   }
 
-  if (error instanceof subError) {
+  if (error instanceof SubError) {
     return res.status(error.statusCode).json({
       message: error.message,
       erroCode: error.errorCode,
@@ -18,7 +18,7 @@ const errorHandler = (error, req, res, next) => {
     });
   }
 
-  if (error instanceof api400Error) {
+  if (error instanceof Api400Error) {
     return res.status(error.statusCode).json({
       message: error.message,
       status: error.statusCode,

@@ -2,7 +2,7 @@ const httpStatusCodes = require("./httpStatusCodes");
 const BaseError = require("./BaseError");
 const errorCodes = require("./errorCodes");
 
-class subError extends BaseError {
+class SubError extends BaseError {
   constructor(
     message,
     errorCode = errorCodes.INVALID_SUBSCRIPTION,
@@ -13,7 +13,7 @@ class subError extends BaseError {
   }
 }
 
-class api400Error extends BaseError {
+class Api400Error extends BaseError {
   constructor(
     message,
     statusCode = httpStatusCodes.BAD_REQUEST,
@@ -23,7 +23,7 @@ class api400Error extends BaseError {
   }
 }
 
-class api404Error extends BaseError {
+class Api404Error extends BaseError {
   constructor(
     message,
     errorCode,
@@ -35,7 +35,7 @@ class api404Error extends BaseError {
 }
 
 module.exports = {
-  api400Error,
-  api404Error,
-  subError,
+  Api400Error,
+  Api404Error,
+  SubError,
 };
